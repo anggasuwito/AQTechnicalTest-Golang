@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "d630064f-c3b7-4726-ad49-0389ad3e11ec",
+		"name": "Asia Quest Collection - Angga Suwito",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16609743"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"angga123\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8008/v1/auth/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODEyNjQyMzMsInVzZXJuYW1lIjoiYW5nZ2ExMjMifQ._JUNLA3T-MreLuaSdNXbKxcU9kZDIUyp2z_jS-Y7Mbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"judul\": \"judul 1\",\r\n    \"deskripsi\": \"deskripsi 1\",\r\n    \"harga\": 999.55,\r\n    \"stok\": 50,\r\n    \"penerbit\": \"penerbit 1\",\r\n    \"book_category\": [\r\n        {\r\n            \"category\": \"kategori A\"\r\n        },\r\n        {\r\n            \"category\": \"kategori B\"\r\n        },\r\n        {\r\n            \"category\": \"kategori C\"\r\n        }\r\n    ],\r\n    \"book_keyword\": [\r\n        {\r\n            \"keyword\": \"keyword A\"\r\n        },\r\n        {\r\n            \"keyword\": \"keyword B\"\r\n        },\r\n        {\r\n            \"keyword\": \"keyword C\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8008/v1/book",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODEyNjQyMzMsInVzZXJuYW1lIjoiYW5nZ2ExMjMifQ._JUNLA3T-MreLuaSdNXbKxcU9kZDIUyp2z_jS-Y7Mbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"judul\": \"judul 1 (updated)\",\r\n    \"deskripsi\": \"deskripsi 1 (updated)\",\r\n    \"harga\": 11999.55,\r\n    \"stok\": 1150,\r\n    \"penerbit\": \"penerbit 1 (updated)\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8008/v1/book",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODEyNjQyMzMsInVzZXJuYW1lIjoiYW5nZ2ExMjMifQ._JUNLA3T-MreLuaSdNXbKxcU9kZDIUyp2z_jS-Y7Mbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8008/v1/book/all?limit=1&page=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"book",
+						"all"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book By ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODEyNjQyMzMsInVzZXJuYW1lIjoiYW5nZ2ExMjMifQ._JUNLA3T-MreLuaSdNXbKxcU9kZDIUyp2z_jS-Y7Mbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8008/v1/book/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODEyNjQyMzMsInVzZXJuYW1lIjoiYW5nZ2ExMjMifQ._JUNLA3T-MreLuaSdNXbKxcU9kZDIUyp2z_jS-Y7Mbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": [\r\n        1,\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8008/v1/book",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"book"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

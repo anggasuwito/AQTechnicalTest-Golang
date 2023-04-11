@@ -12,6 +12,6 @@ func Book(r *gin.RouterGroup, c controller.Controller) {
 	bookAPI.POST("", c.BookController.Create)
 	bookAPI.GET("/all", c.BookController.GetAll)
 	bookAPI.GET("/:id", c.BookController.GetByID)
-	bookAPI.PUT("/:id", c.BookController.Update)
+	bookAPI.PUT("", c.BookController.Update)
 	bookAPI.DELETE("", c.BookController.Delete)
 }

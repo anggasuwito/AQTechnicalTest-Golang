@@ -12,6 +12,6 @@ func (r BookRepo) UpdateRepo(req models.Book) (err error) {
 		"harga":      req.Harga,
 		"stok":       req.Stok,
 		"penerbit":   req.Penerbit,
-		"updated_at": time.Now(),
+		"updated_at": time.Now().Format(time.RFC3339),
 	}).Error
 }

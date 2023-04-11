@@ -18,22 +18,28 @@ func (r BookRepo) TXCreateRepo(req models.BookDetails) (err error) {
 		return err
 	}
 
-	err = tx.Debug().Select(
-		"BookID",
-		"Category",
-	).Create(&req.BookCategory).Error
-	if err != nil {
-		tx.Rollback()
-		return err
+	for _, category := range req.BookCategory {
+		category.BookID = req.ID
+		err = tx.Debug().Select(
+			"BookID",
+			"Category",
+		).Create(&category).Error
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
 	}
 
-	err = tx.Debug().Select(
-		"BookID",
-		"Keyword",
-	).Create(&req.BookKeyword).Error
-	if err != nil {
-		tx.Rollback()
-		return err
+	for _, keyword := range req.BookKeyword {
+		keyword.BookID = req.ID
+		err = tx.Debug().Select(
+			"BookID",
+			"Keyword",
+		).Create(&keyword).Error
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
 	}
 
 	return tx.Commit().Error

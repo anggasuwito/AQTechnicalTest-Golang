@@ -8,7 +8,7 @@ import (
 func (r BookRepo) TXDeleteRepo(id models.BookListID) (err error) {
 	tx := r.DB.Begin()
 	err = tx.Debug().Model(&models.Book{}).Where("deleted_at IS NULL AND id IN (?)", id.ID).Updates(map[string]interface{}{
-		"deleted_at": time.Now(),
+		"deleted_at": time.Now().Format(time.RFC3339),
 	}).Error
 	if err != nil {
 		tx.Rollback()
@@ -16,7 +16,7 @@ func (r BookRepo) TXDeleteRepo(id models.BookListID) (err error) {
 	}
 
 	err = tx.Debug().Model(&models.BookCategory{}).Where("deleted_at IS NULL AND book_id IN (?)", id.ID).Updates(map[string]interface{}{
-		"deleted_at": time.Now(),
+		"deleted_at": time.Now().Format(time.RFC3339),
 	}).Error
 	if err != nil {
 		tx.Rollback()
@@ -24,7 +24,7 @@ func (r BookRepo) TXDeleteRepo(id models.BookListID) (err error) {
 	}
 
 	err = tx.Debug().Model(&models.BookKeyword{}).Where("deleted_at IS NULL AND book_id IN (?)", id.ID).Updates(map[string]interface{}{
-		"deleted_at": time.Now(),
+		"deleted_at": time.Now().Format(time.RFC3339),
 	}).Error
 	if err != nil {
 		tx.Rollback()
